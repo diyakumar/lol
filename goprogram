@@ -4,36 +4,28 @@ import (
 	"fmt"
 )
 
-// CountKmers counts the occurrences of each k-mer of length k in the given string s.
 func CountKmers(s string, k int) map[string]int {
-	// Map construction
 	kmerCounts := make(map[string]int)
 
-	// Edge case check
 	if len(s) < k || k < 1 {
 		return kmerCounts
 	}
 
-	// Loop to iterate over the string
 	for i := 0; i <= len(s)-k; i++ {
-		// Extracting the k-mer from the string
 		kmer := s[i : i+k]
-		// Map incrementation
 		kmerCounts[kmer]++
 	}
 
 	return kmerCounts
 }
+// using it
 
 func main() {
-	// Example string and k value
 	s := "GATGATGATC"
 	k := 3
 
-	// Calling CountKmers method
 	kmerCounts := CountKmers(s, k)
 
-	// Printing the output
 	fmt.Println("K-mer counts for:", s)
 	for kmer, count := range kmerCounts {
 		fmt.Printf("%s: %d\n", kmer, count)
